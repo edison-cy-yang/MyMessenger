@@ -1,14 +1,7 @@
 <ion-view view-title="Chat Room {{ roomName }}">
     <ion-content>
+        <ion-scroll direction="y" style="height: 500px">
         <ion-list ng-show="roomName">
-            <ion-item class="item item-input-inset">
-                <label class="item-input-wrapper">
-                    <input type="text" ng-model="IM.textMessage" placeholder="Type in your message...">
-                </label>
-                <button ng-click="sendMessage(IM.textMessage)" class="button button-small button-balanced">
-                    Send
-                </button>
-            </ion-item>
             <ion-item ng-hide="chats" class="textCenter">
                 <i class="icon ion-loading-c"></i> Loading Chats
             </ion-item>
@@ -25,6 +18,15 @@
                 </ion-option-button>
             </ion-item>
         </ion-list>
+        </ion-scroll>
+        <ion-item class="item item-input-inset">
+                <label class="item-input-wrapper">
+                    <input type="text" ng-model="IM.textMessage" placeholder="Type in your message...">
+                </label>
+                <button ng-click="sendMessage(IM.textMessage)" class="button button-small button-balanced">
+                    Send
+                </button>
+        </ion-item>
         <ion-list ng-hide="roomName">
             <ion-item class="textCenter">
                 <h4>Please select a room to chat first.</h4>
