@@ -1,0 +1,115 @@
+{
+
+"rooms" : [{
+
+    "chats" : {
+
+        "-JglJnGDXcqLq6m844pZ" : {
+
+            "createdAt" : 1422461711580,
+
+            "from" : "Vla2",
+
+            "message" : "Ahh que duro estoy. App pa android y la web at the same time"
+
+        }
+
+    },
+
+    "icon" : "ion-university",
+
+    "id" : 0,
+
+    "name" : "Academics",
+
+    "notes" : "Discuss about education, colleges & degrees"
+
+    }, {
+
+    "chats" : {
+
+        "-Jg7fpJg910-ytGND3Ky" : {
+
+            "createdAt" : 1421779883628,
+
+            "from" : "rahulluthra",
+
+            "message" : "Which Camera should I buy for beginners?"
+
+        }
+
+    },
+
+    "icon" : "ion-camera",
+
+    "id" : 1,
+
+    "name" : "Photography",
+
+    "notes" : "Discuss about photography, cameras, picture modes"
+
+    }, {
+
+    "chats" : {
+
+        "-JgA5BQCjRj-p7EOHD20" : {
+
+            "createdAt" : 1421820348392,
+
+            "from" : "rahatkh",
+
+            "message" : "I love to hear classical music."
+
+        }
+
+    },
+
+    "icon" : "ion-music-note",
+
+    "id" : 2,
+
+    "name" : "Music",
+
+    "notes" : "Talk to fellow music lovers about latest songs & albums"
+
+    }, {
+
+    "chats" : {
+
+        "-JgAI2J4ksJJJA8hxNJK" : {
+
+            "createdAt" : 1421823734183,
+
+            "from" : "ankit",
+
+            "message" : "hiiiii"
+
+        }
+
+    },
+
+    "icon" : "ion-woman",
+
+    "id" : 3,
+
+    "name" : "Fashion",
+
+    "notes" : "Talk about latest fashion, clothes & accessories"
+
+    }, {
+
+    "chats" : {
+
+    },
+
+    "icon" : "ion-plane",
+
+    "id" : 4,
+
+    "name" : "Travel",
+
+    "notes" : "Discuss about holidays, vacations & travel deals"
+
+    } ]
+
+}
