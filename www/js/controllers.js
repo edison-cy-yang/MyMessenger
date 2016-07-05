@@ -9,7 +9,7 @@ angular.module('mychat.controllers', [])
   var ref = new Firebase(firebaseUrl);
   var auth = $firebaseAuth(ref);
 
-  $ionicModal.fromTemplateUrl('templates/signup.html', {
+  $ionicModal.fromTemplateUrl('views/signup.html', {
     scope: $scope
   }).then(function (modal) {
     $scope.modal = modal;
