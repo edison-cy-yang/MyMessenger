@@ -16,6 +16,12 @@ angular.module('mychat.services', ['firebase'])
      }, 
      get: function(roomId){
        return rooms.$getRecord(roomId);
+     },
+     createRoom: function(chatRoom) {
+       rooms.$add(chatRoom).then(function (data) {
+         console.log("Chat room added!");
+       });
+
      }
    }
  })
@@ -62,6 +68,7 @@ angular.module('mychat.services', ['firebase'])
         selectedRoomId = roomId;
         if(!isNaN(selectedRoomId)) {
           chats = $firebaseArray(ref.child('rooms').child(selectedRoomId).child('chats'));
+          console.log("rooms selected: " + selectedRoomId);
         }
       },
       send: function(from, message) {
