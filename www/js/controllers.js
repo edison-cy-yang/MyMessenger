@@ -111,7 +111,13 @@ angular.module('mychat.controllers', [])
   $scope.convertToDateAndTime = function(timestamp) {
       var d = new Date(timestamp);
       var h = d.getHours();
+      if(h < 10) {
+          h = "0" + h;
+      }
       var m = d.getMinutes();
+      if(m < 10) {
+          m = "0" + m;
+      }
       var month = d.getMonth() + 1;
       var date = d.getDate();
       var dateTime = month + "/" + date + " - " + h + ":" + m;
