@@ -100,6 +100,24 @@ angular.module('mychat.controllers', [])
       Chats.remove(chat);
   }
 
+  $scope.convertToTime = function(timestamp) {
+      var d = new Date(timestamp);
+      var h = d.getHours();
+      var m = d.getMinutes();
+      var time = h + ":" + m;
+      return time;      
+  }
+
+  $scope.convertToDateAndTime = function(timestamp) {
+      var d = new Date(timestamp);
+      var h = d.getHours();
+      var m = d.getMinutes();
+      var month = d.getMonth() + 1;
+      var date = d.getDate();
+      var dateTime = month + "/" + date + " - " + h + ":" + m;
+      return dateTime;
+  }
+
 
 })
 
