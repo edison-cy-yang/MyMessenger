@@ -8,7 +8,7 @@
             <ion-item ng-if="chats.length == 0" class="textCenter">
                 <h4>No messages in this room. Send message to start.</h4>
             </ion-item>
-            <ion-item class="" ng-repeat="chat in chats | orderBy:'createdAt':true" type="item-text-wrap">
+            <ion-item class="" ng-repeat="chat in chats | orderBy:'createdAt':false" type="item-text-wrap">
                 <h4>{{chat.from}} :</h4>
                 <span am-time-ago="chat.createdAt" class="item-note">
                 </span>
