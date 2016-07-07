@@ -55,4 +55,4 @@ angular.module('mychat.controllers')
   }
 
 
-})
+});

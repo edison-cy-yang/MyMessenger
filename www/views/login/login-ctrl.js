@@ -68,4 +68,4 @@ angular.module('mychat.controllers')
     } else
         alert("Please enter email and password both");
   };
-})
+});
