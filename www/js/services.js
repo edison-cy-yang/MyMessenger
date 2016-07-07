@@ -1,4 +1,4 @@
-angular.module('mychat.services', ['firebase'])
+angular.module('mymessenger.services', ['firebase'])
 
 .factory("Auth", ["$firebaseAuth", "$rootScope", 
     function($firebaseAuth, $rootScope) {

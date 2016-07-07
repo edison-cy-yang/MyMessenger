@@ -1,6 +1,6 @@
 var firebaseUrl = "https://edimessenger.firebaseio.com/";
 
-angular.module('mychat.controllers', [])
+angular.module('mymessenger.controllers', [])
 
 
 .controller('RoomsCtrl', function($scope, Rooms, Chats, $state) {

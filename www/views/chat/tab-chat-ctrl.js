@@ -1,4 +1,4 @@
-angular.module('mychat.controllers')
+angular.module('mymessenger.controllers')
 
 .controller('ChatCtrl', function($scope, Chats, $stateParams) {
   console.log('Chat Controller initialized');
