@@ -1,6 +1,6 @@
 var firebaseUrl = "https://edimessenger.firebaseio.com/";
 
-angular.module('mymessenger.controllers')
+angular.module('mymessenger.controllers', [])
 
 .controller('LoginCtrl', function($scope, $ionicModal, $state, $rootScope, $firebaseAuth, $ionicLoading) {
   console.log('Login Controller Initialized');
