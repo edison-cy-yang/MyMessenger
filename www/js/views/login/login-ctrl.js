@@ -9,7 +9,7 @@ angular.module('mymessenger.controllers', [])
   var ref = new Firebase(firebaseUrl);
   var auth = $firebaseAuth(ref);
 
-  $ionicModal.fromTemplateUrl('views/signup/signup.html', {
+  $ionicModal.fromTemplateUrl('js/views/signup/signup.html', {
     scope: $scope
   }).then(function (modal) {
     $scope.modal = modal;

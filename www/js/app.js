@@ -44,7 +44,7 @@ $stateProvider
 // State to represent Login View
 .state('login', {
     url: "/login",
-    templateUrl: "views/login/login.html",
+    templateUrl: "js/views/login/login.html",
     controller: 'LoginCtrl',
     resolve: {
         // controller will not be loaded until $waitForAuth resolves
@@ -60,7 +60,7 @@ $stateProvider
 .state('tab', {
     url: "/tab",
     abstract: true,
-    templateUrl: "views/tabs/tabs.html",
+    templateUrl: "js/views/tabs/tabs.html",
     resolve: {
         // controller will not be loaded until $requireAuth resolves
         // Auth refers to our $firebaseAuth wrapper in the example above
@@ -79,7 +79,7 @@ $stateProvider
     url: '/rooms',
     views: {
         'tab-rooms': {
-            templateUrl: 'views/rooms/tab-rooms.html',
+            templateUrl: 'js/views/rooms/tab-rooms.html',
             controller: 'RoomsCtrl'
         }
     }
@@ -89,7 +89,7 @@ $stateProvider
     url: '/chat/:roomId',
     views: {
         'tab-chat': {
-            templateUrl: 'views/chat/tab-chat.html',
+            templateUrl: 'js/views/chat/tab-chat.html',
             controller: 'ChatCtrl'
         }
     }
