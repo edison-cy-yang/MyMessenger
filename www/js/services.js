@@ -1,11 +1,19 @@
 angular.module('mymessenger.services', ['firebase'])
 
+
+/**
+ * Auth Service
+ */
 .factory("Auth", ["$firebaseAuth", "$rootScope", 
     function($firebaseAuth, $rootScope) {
         var ref = new Firebase(FIREBASE_URL);
         return $firebaseAuth(ref);
  }])
 
+
+/**
+ * Rooms Service
+ */
  .factory('Rooms', function ($firebaseArray){
    var ref = new Firebase(FIREBASE_URL);
    var rooms = $firebaseArray(ref.child('rooms'));
@@ -26,6 +34,10 @@ angular.module('mymessenger.services', ['firebase'])
    }
  })
  
+
+ /**
+  * Chats Service
+  */
  .factory('Chats', function ($firebaseArray, Rooms) {
    
    var selectedRoomId;
