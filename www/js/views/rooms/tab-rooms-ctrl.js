@@ -4,6 +4,23 @@ angular.module('mymessenger.controllers')
 .controller('RoomsCtrl', function($scope, Rooms, Chats, $state) {
   console.log("Rooms Controller initialized");
    $scope.rooms = Rooms.all();
+   var chatRoom = {
+          chats: {
+              "12345dfsf":{
+                  createdAt: 0,
+                  from: "edi",
+                  message: "msg"
+
+              }
+
+          },
+          icon: "ion-university",
+          id: 2,
+          name: "random ubc irving room",
+          notes: "just talk!!!!!!"
+      };
+    Rooms.createRoom(chatRoom);
+
 //    var chats = [];
 //    var chatRoom = {
 //           chats: chats,
