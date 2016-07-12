@@ -91,7 +91,7 @@ $stateProvider
 })
 
 .state('createRoom', {
-    //cache: false,
+    cache: false,
     url: '/createRoom',
     templateUrl: 'js/views/create/create-room.html',
     controller: 'CreateRoomCtrl'

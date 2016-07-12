@@ -1,4 +1,4 @@
-angular.module('mymessenger')
+angular.module('mymessenger.controllers')
 
 
 .controller('CreateRoomCtrl', function($scope, $ionicHistory) {
