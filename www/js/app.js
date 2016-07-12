@@ -80,6 +80,7 @@ $stateProvider
 })
 
 .state('tab.chat', {
+    cache: false,
     url: '/chat/:roomId',
     views: {
         'tab-chat': {
