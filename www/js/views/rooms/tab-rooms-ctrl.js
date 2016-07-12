@@ -19,7 +19,7 @@ angular.module('mymessenger.controllers')
           name: "random ubc irving room",
           notes: "just talk!!!!!!"
       };
-    Rooms.createRoom(chatRoom);
+    //Rooms.createRoom(chatRoom);
 
 //    var chats = [];
 //    var chatRoom = {
