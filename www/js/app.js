@@ -90,6 +90,13 @@ $stateProvider
     }
 })
 
+.state('createRoom', {
+    //cache: false,
+    url: '/createRoom',
+    templateUrl: 'js/views/create/create-room.html',
+    controller: 'CreateRoomCtrl'
+})
+
        // if none of the above states are matched, use this as the fallback
        $urlRouterProvider.otherwise('/login');
 

@@ -46,5 +46,14 @@ angular.module('mymessenger.controllers')
           notes: notes
       };
       Rooms.createRoom(chatRoom);
-  }  
+  } 
+  
+
+  /**
+   * Navigation to the create state
+   */
+  $scope.navCreate = function() {
+      $state.go('createRoom');
+  }
+
 });

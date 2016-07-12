@@ -1,4 +1,9 @@
 <ion-view view-title="Rooms">
+    <ion-nav-buttons id="10" side="secondary">
+    <button class="button button-clear button-icon" ng-click="navCreate();">
+      <i class="ion-plus"></i>
+    </button>
+  </ion-nav-buttons>
     <ion-content>
         <ion-list ng-show="rooms">
             <ion-item class="item-icon-left" ng-repeat="room in rooms" type="item-text-wrap" ng-click="openChatRoom(room.$id)">
