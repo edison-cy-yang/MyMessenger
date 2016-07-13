@@ -70,6 +70,7 @@ $stateProvider
 // Each tab has its own nav history stack:
 
 .state('tab.rooms', {
+    cache: false,
     url: '/rooms',
     views: {
         'tab-rooms': {

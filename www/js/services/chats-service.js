@@ -1,4 +1,4 @@
-angular.module('mymessenger.services', ['firebase'])
+angular.module('mymessenger.services')
 
  
  .factory('Chats', function ($firebaseArray, Rooms) {
@@ -41,10 +41,10 @@ angular.module('mymessenger.services', ['firebase'])
       selectRoom: function(roomId) {
         console.log("selecting the room with id: " + roomId);
         selectedRoomId = roomId;
-        if(!isNaN(selectedRoomId)) {
+        //if(!isNaN(selectedRoomId)) {
           chats = $firebaseArray(ref.child('rooms').child(selectedRoomId).child('chats'));
           console.log("rooms selected: " + selectedRoomId);
-        }
+        //}
       },
       send: function(from, message) {
         console.log("sending message from: " + from.displayName + " & message is " + message);

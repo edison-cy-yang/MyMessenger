@@ -1,4 +1,5 @@
-angular.module('mymessenger.services', ['firebase'])
+angular.module('mymessenger.services')
+
 
  .factory('Rooms', function ($firebaseArray){
    var ref = new Firebase(FIREBASE_URL);
@@ -16,6 +17,12 @@ angular.module('mymessenger.services', ['firebase'])
          console.log("Chat room added!");
        });
 
+     },
+     remove: function(chatRoom) {
+       rooms.$remove(chatRoom).then(function(ref) {
+         ref.key() === chatRoom.$id;
+       });
      }
+
    }
  });
