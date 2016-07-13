@@ -4,28 +4,11 @@ angular.module('mymessenger.controllers')
 .controller('RoomsCtrl', function($scope, Rooms, Chats, $state) {
   console.log("Rooms Controller initialized");
    $scope.rooms = Rooms.all();
-   var chatRoom = {
-          chats: {
-              
 
-          },
-          icon: "ion-university",
-          id: 2,
-          name: "newest room",
-          notes: "just talk!!!!!!"
-      };
-    // Rooms.createRoom(chatRoom);
 
-//    var chats = [];
-//    var chatRoom = {
-//           chats: chats,
-//           icon: "ion-university",
-//           id: 2,
-//           name: 'random',
-//           notes: 'just talking about random stuff'
-//       };
-//       Rooms.createRoom(chatRoom);
-
+  /**
+   * Open a specific chat room
+   */
   $scope.openChatRoom = function (roomId) {
     console.log("room id is: " + roomId);
     $state.go('tab.chat', {
