@@ -4,4 +4,32 @@
             <i class="ion-chevron-left"></i>
         </button>
     </ion-nav-buttons>
+    <ion-content>
+        <form name="createRoom" novalidate>
+            <div>
+                <div class="list">
+                    <label class="item item-input">
+                        <span class="input-label">Room Name</span>
+                        <input name="roomName" ng-model="roomName" type="text" ng-maxlength="35" placeholder="Required" required/>
+                    </label>
+
+                    <label class="item item-input">
+                        <span class="input-label">Description</span>
+                        <input name="description" ng-model="description" type="text" ng-maxlength="50"/>
+                    </label>
+                </div>
+
+            </div>
+        </form>
+
+        <div>
+            <div>
+                <div class="padding-left padding-right padding-bottom">
+                    <button class="button button-block button-positive" ng-click="createChatRoom(roomName, description)" ng-disabled="createRoom.$invalid">
+                        Create
+                    </button>
+            </div>
+        </div>
+
+    </ion-content>
 </ion-view>
