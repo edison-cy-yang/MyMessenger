@@ -1,4 +1,9 @@
 <ion-view view-title="Chat Room {{ roomName }}">
+    <ion-nav-buttons id="10" side="left">
+        <button class="button button-clear button-icon" ng-click="goBack()">
+            <i class="ion-chevron-left"></i>
+        </button>
+    </ion-nav-buttons>
     <ion-content>
         <ion-scroll direction="y" style="height: 500px">
         <ion-list ng-show="roomName">

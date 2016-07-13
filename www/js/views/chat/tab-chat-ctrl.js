@@ -1,6 +1,6 @@
 angular.module('mymessenger.controllers')
 
-.controller('ChatCtrl', function($scope, Chats, $stateParams) {
+.controller('ChatCtrl', function($scope, Chats, $stateParams, $ionicHistory) {
   console.log('Chat Controller initialized');
   $scope.chats = Chats.all();
   $scope.IM = {
@@ -52,6 +52,11 @@ angular.module('mymessenger.controllers')
       var date = d.getDate();
       var dateTime = month + "/" + date + " - " + h + ":" + m;
       return dateTime;
+  }
+
+
+  $scope.goBack = function() {
+      $ionicHistory.goBack();
   }
 
 
