@@ -97,6 +97,16 @@ $stateProvider
     controller: 'CreateRoomCtrl'
 })
 
+.state('tab.account', {
+    url: '/account',
+    views: {
+        'account': {
+            templateUrl: 'js/views/account/account.html',
+            controller: 'AccountCtrl'
+        }
+    }
+})
+
        // if none of the above states are matched, use this as the fallback
        $urlRouterProvider.otherwise('/login');
 
