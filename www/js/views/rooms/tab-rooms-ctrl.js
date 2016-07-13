@@ -39,4 +39,12 @@ angular.module('mymessenger.controllers')
       $state.go('createRoom');
   }
 
+
+  /**
+   * Delete the chatroom
+   */
+  $scope.remove = function(chatRoom) {
+      Rooms.remove(chatRoom);
+  } 
+
 });

@@ -30,7 +30,13 @@ angular.module('mymessenger.services', ['firebase'])
          console.log("Chat room added!");
        });
 
+     },
+     remove: function(chatRoom) {
+       rooms.$remove(chatRoom).then(function(ref) {
+         ref.key() === chatRoom.$id;
+       });
      }
+
    }
  })
  

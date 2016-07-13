@@ -9,6 +9,9 @@
             <ion-item class="item-icon-left" ng-repeat="room in rooms" type="item-text-wrap" ng-click="openChatRoom(room.$id)">
                 <i class="icon {{room.icon}}"></i>
                 <h2>{{room.name}}</h2>
+                <ion-option-button class="button-assertive" ng-click="remove(room)">
+                    Delete
+                </ion-option-button>
             </ion-item>
         </ion-list>
         <ion-list ng-hide="rooms.length">
