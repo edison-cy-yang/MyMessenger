@@ -5,7 +5,7 @@ var FIREBASE_URL = "https://edimessenger.firebaseio.com/";
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('mymessenger', ['ionic', 'mymessenger.controllers', 'mymessenger.services', 'firebase'])
+angular.module('mymessenger', ['ionic', 'mymessenger.controllers', 'mymessenger.services', 'firebase', 'ngCordova'])
 
 .run(function ($ionicPlatform, $rootScope) {
      $ionicPlatform.ready(function () {
