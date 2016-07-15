@@ -1,8 +1,11 @@
 angular.module('mymessenger.controllers')
 
 
-.controller('RoomsCtrl', function($scope, Rooms, Chats, $state) {
+.controller('RoomsCtrl', function($scope, Rooms, Chats, $state, $ionicHistory) {
   console.log("Rooms Controller initialized");
+
+  $ionicHistory.clearHistory();
+
    $scope.rooms = Rooms.all();
 
 
