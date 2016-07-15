@@ -5,7 +5,7 @@ angular.module('mymessenger.controllers')
 
     var ref = new Firebase(FIREBASE_URL);
     var syncImages = $firebaseArray(ref.child("images"));
-    $scope.images = {};
+    $scope.images = [];
 
     $scope.images = syncImages;
 
@@ -18,7 +18,7 @@ angular.module('mymessenger.controllers')
 
     $scope.upload = function() {
             var options = {
-                quality : 75,
+                quality : 100,
                 destinationType : Camera.DestinationType.DATA_URL,
                 sourceType : Camera.PictureSourceType.CAMERA,
                 allowEdit : true,
@@ -29,7 +29,7 @@ angular.module('mymessenger.controllers')
                 saveToPhotoAlbum: false
             };
             $cordovaCamera.getPicture(options).then(function(imageData) {
-                syncArray.$add({image: imageData}).then(function() {
+                syncImages.$add({image: imageData}).then(function() {
                     alert("Image has been uploaded");
                 });
             }, function(error) {
