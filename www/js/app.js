@@ -7,7 +7,7 @@ var FIREBASE_URL = "https://edimessenger.firebaseio.com/";
 // 'starter.controllers' is found in controllers.js
 angular.module('mymessenger', ['ionic', 'mymessenger.controllers', 'mymessenger.services', 'firebase', 'ngCordova'])
 
-.run(function ($ionicPlatform, $rootScope) {
+.run(function ($ionicPlatform, $rootScope, Auth, $state) {
      $ionicPlatform.ready(function () {
     // Hide the accessory bar by default (remove this to show the accessory bar          above the keyboard
     // for form inputs)
@@ -22,6 +22,15 @@ angular.module('mymessenger', ['ionic', 'mymessenger.controllers', 'mymessenger.
     $rootScope.logout = function () {
         console.log("Logging out from the app");
     }
+    });
+
+    Auth.$onAuth(function(authData) {
+        if (authData) {
+            console.log("Logged in as:", authData.uid);
+            $state.go('tab.rooms');
+        } else {
+            console.log("Logged out");
+        }
     });
     
  })
