@@ -89,15 +89,11 @@ $stateProvider
     }
 })
 
-.state('tab.chat', {
+.state('chat', {
     cache: false,
-    url: '/chat/:roomId',
-    views: {
-        'tab-chat': {
-            templateUrl: 'js/views/chat/tab-chat.html',
-            controller: 'ChatCtrl'
-        }
-    }
+    url: '/chat/:roomId',   
+    templateUrl: 'js/views/chat/chat.html',
+    controller: 'ChatCtrl'   
 })
 
 .state('createRoom', {

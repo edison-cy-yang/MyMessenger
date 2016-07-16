@@ -14,10 +14,10 @@ angular.module('mymessenger.controllers')
    */
   $scope.openChatRoom = function (roomId) {
     console.log("room id is: " + roomId);
-    $state.go('tab.chat', {
+    $state.go('chat', {
         roomId: roomId
     });
-  }
+   }
 
 
   /**
