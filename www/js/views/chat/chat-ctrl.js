@@ -12,14 +12,6 @@ angular.module('mymessenger.controllers')
 
   var roomName = Chats.getSelectedRoomName();
 
-  var ref = new Firebase(FIREBASE_URL);
-  var authData = Auth.$getAuth();
-  ref.child("users").child(authData.uid).once('value', function (snapshot) {
-                var val = snapshot.val();
-                $scope.displayName = val;
-                console.log("displayName: " + $scope.displayName.displayName);
-            });
-
   // fetching chat records only if a room is selected
   if(roomName) {
       $scope.roomName = ' - ' + roomName;

@@ -29,14 +29,14 @@ angular.module('mymessenger', ['ionic', 'mymessenger.controllers', 'mymessenger.
     Auth.$onAuth(function(authData) {
         if (authData) {
             console.log("Logged in as:", authData.uid);
-            // ref.child("users").child(authData.uid).once('value', function (snapshot) {
-            //     var val = snapshot.val();
-            //     // To Update AngularJS $scope either use $apply or $timeout
-            //     $scope.$apply(function () {
-            //         $rootScope.displayName = val;
-            //     });
-            //     console.log("root displayName: " + $rootScope.displayName);
-            // });
+            ref.child("users").child(authData.uid).once('value', function (snapshot) {
+                var val = snapshot.val();
+                // To Update AngularJS $scope either use $apply or $timeout
+                //$scope.$apply(function () {
+                    $rootScope.displayName = val;
+               // });
+                console.log("root displayName: " + $rootScope.displayName.displayName);
+            });
             $state.go('tab.rooms');
         } else {
             console.log("Logged out");
