@@ -1,6 +1,6 @@
 angular.module('mymessenger.controllers')
 
-.controller('ChatCtrl', function($scope, Chats, $stateParams, $ionicHistory) {
+.controller('ChatCtrl', function($scope, Chats, $stateParams, $ionicHistory, Auth) {
   console.log('Chat Controller initialized');
   $scope.chats = Chats.all();
   $scope.IM = {
@@ -11,6 +11,14 @@ angular.module('mymessenger.controllers')
   Chats.selectRoom($stateParams.roomId);
 
   var roomName = Chats.getSelectedRoomName();
+
+  var ref = new Firebase(FIREBASE_URL);
+  var authData = Auth.$getAuth();
+  ref.child("users").child(authData.uid).once('value', function (snapshot) {
+                var val = snapshot.val();
+                $scope.displayName = val;
+                console.log("displayName: " + $scope.displayName.displayName);
+            });
 
   // fetching chat records only if a room is selected
   if(roomName) {
