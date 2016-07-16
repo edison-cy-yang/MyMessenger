@@ -2,9 +2,17 @@ var firebaseUrl = "https://edimessenger.firebaseio.com/";
 
 angular.module('mymessenger.controllers', [])
 
-.controller('LoginCtrl', function($scope, $ionicModal, $state, $rootScope, $firebaseAuth, $ionicLoading) {
+.controller('LoginCtrl', function($scope, $ionicModal, $state, $rootScope, $firebaseAuth, $ionicLoading, Auth) {
   console.log('Login Controller Initialized');
   //console.log($rootScope.FIREBASE_URL);
+  Auth.$onAuth(function(authData) {
+        if (authData) {
+            console.log("Logged in as:", authData.uid);
+            $state.go('tab.rooms');
+        } else {
+            console.log("Logged out");
+        }
+   });
 
   var ref = new Firebase(firebaseUrl);
   var auth = $firebaseAuth(ref);
@@ -22,7 +30,7 @@ angular.module('mymessenger.controllers', [])
                 template: 'Signing Up...'
             });
 
-            auth.$createUser({
+            Auth.$createUser({
                 email: user.email,
                 password: user.password
             }).then(function (userData) {
@@ -47,7 +55,7 @@ angular.module('mymessenger.controllers', [])
         $ionicLoading.show({
             template: 'Signing In...'
         });
-        auth.$authWithPassword({
+        Auth.$authWithPassword({
             email: user.email,
             password: user.pwdForLogin
         }).then(function (authData) {
