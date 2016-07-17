@@ -1,5 +1,3 @@
-var firebaseUrl = "https://edimessenger.firebaseio.com/";
-
 angular.module('mymessenger.controllers', [])
 
 .controller('LoginCtrl', function($scope, $ionicModal, $state, $rootScope, $firebaseAuth, $ionicLoading, Auth) {
@@ -14,8 +12,7 @@ angular.module('mymessenger.controllers', [])
         }
    });
 
-  var ref = new Firebase(firebaseUrl);
-  var auth = $firebaseAuth(ref);
+  var ref = new Firebase(FIREBASE_URL);
 
   $ionicModal.fromTemplateUrl('js/views/signup/signup.html', {
     scope: $scope
