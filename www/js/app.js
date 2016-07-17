@@ -88,6 +88,8 @@ $stateProvider
 
 // Each tab has its own nav history stack:
 
+
+
 .state('tab.rooms', {
     cache: false,
     url: '/rooms',
@@ -119,6 +121,17 @@ $stateProvider
         'account': {
             templateUrl: 'js/views/account/account.html',
             controller: 'AccountCtrl'
+        }
+    }
+})
+
+.state('tab.contacts', {
+    //cache: false,
+    url: '/contacts',
+    views: {
+        'contacts': {
+            templateUrl: 'js/views/contacts/contacts.html',
+            controller: 'ContactsCtrl'
         }
     }
 })
