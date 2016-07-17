@@ -52,10 +52,26 @@ angular.module('mymessenger.services')
           var chatMessage = {
             from: from.displayName,
             message: message,
+            isImage: false,
             createdAt: Firebase.ServerValue.TIMESTAMP
           };
           chats.$add(chatMessage).then(function (data) {
             console.log("message added!!");
+          });
+        }
+      },
+      sendImage: function(from, imageData) {
+        console.log("sending image from: " + from.displayName);
+        if(from && imageData) {
+          var imageMessage = {
+            from: from.displayName,
+            message: " test",
+            isImage: true,
+            image: imageData,
+            createdAt: Firebase.ServerValue.TIMESTAMP
+          };
+          chats.$add(imageMessage).then(function (data) {
+            console.log("image added!!");
           });
         }
       }
