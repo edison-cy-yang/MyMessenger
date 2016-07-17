@@ -17,7 +17,8 @@
                 <h4>{{chat.from}} :</h4>
                 <span am-time-ago="chat.createdAt" class="item-note">
                 </span>
-                <p>{{chat.message}}</p>
+                <p ng-if="!chat.isImage">{{chat.message}}</p>
+                <img ng-if="chat.isImage"" ng-src="data:image/jpeg;base64,{{chat.image}}" style="width: 50%; height: 50%" />
                 <p>{{convertToDateAndTime(chat.createdAt)}}</p>
                 <ion-option-button class="button-assertive" ng-click="remove(chat)">
                     Delete
