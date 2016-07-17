@@ -6,6 +6,7 @@ angular.module('mymessenger.services')
    var selectedRoomId;
    
     var ref = new Firebase(FIREBASE_URL);
+    var images = $firebaseArray(ref.child('images'));
     var chats;
 
     return {
@@ -70,9 +71,12 @@ angular.module('mymessenger.services')
             image: imageData,
             createdAt: Firebase.ServerValue.TIMESTAMP
           };
-          chats.$add(imageMessage).then(function (data) {
+          chats.$add(imageMessage).then(function () {
             console.log("image added!!");
           });
+          images.$add({image: imageData}).then(function () {
+            console.log("image added to firebase image!");
+          })
         }
       }
 
