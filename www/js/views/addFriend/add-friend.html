@@ -18,8 +18,22 @@
         <div>
             <div>
                 <div class="padding-left padding-right padding-bottom">
-                    <button class="button button-block button-positive" ng-click="createChatRoom(roomName, description)" ng-disabled="createRoom.$invalid">
-                        Create
+                    <button class="button button-block button-positive" ng-click="searchFriend(friendEmail)" ng-disabled="addFriend.$invalid">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h1>{{friend.displayName}}</h1>
+            </div>
+        </div>
+                <div>
+            <div>
+                <div class="padding-left padding-right padding-bottom">
+                    <button class="button button-block button-positive" ng-click="add(friend)">
+                        Add
                     </button>
                 </div>
             </div>
