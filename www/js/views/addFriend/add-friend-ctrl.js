@@ -1,6 +1,6 @@
 angular.module('mymessenger.controllers')
 
-.controller('AddFriendCtrl', function($scope, Friends) {
+.controller('AddFriendCtrl', function($scope, Friends, $ionicHistory) {
     console.log("AddFriendCtrl initialized!");
 
     $scope.friend;
@@ -11,7 +11,14 @@ angular.module('mymessenger.controllers')
 
 
     $scope.add = function(friend) {
-        console.log("friend email: " + friend);
-    }
+        Friends.add(friend);
+        console.log("friend email: " + friend.email);
+        $ionicHistory.goBack();
+    };
+
+
+    $scope.goBack = function() {
+        $ionicHistory.goBack();
+    };
 
 });

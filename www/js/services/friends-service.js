@@ -13,15 +13,37 @@ angular.module('mymessenger.services')
     return {
         search: function(email) {
             var friend;
+            var friendWithUid;
             usersRef.orderByChild("email").equalTo(email).on("child_added", function(snapshot) {
                 console.log(snapshot.key());
                 friend = users.$getRecord(snapshot.key());
-                console.log("friends name: " + friend.displayName);
+                friendWithUid = {
+                    displayName: friend.displayName,
+                    email: friend.email,
+                    uid: snapshot.key()
+                }
+                console.log("friends name: " + friendWithUid.displayName);
             });
-            return friend;
+            
+            return friendWithUid;
         }, 
         all: function() {
             return friends;
+        },
+        add: function(friend) {
+            // usersRef.orderByChild("email").equalTo(friend.email).on("child_added", function(snapshot) {
+            //     console.log(snapshot.key());
+                //friend = users.$getRecord(snapshot.key());
+                friends.$add(friend).then(function (data) {
+                    console.log("friend added!");
+                });
+                console.log("friends name: " + friend.displayName);
+            // });
+        },
+        remove: function(friend) {
+            friends.$remove(friend).then(function(ref) {
+                // ref.key() === chatRoom.$id;
+            });
         }
     }
  });
