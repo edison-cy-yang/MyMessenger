@@ -6,7 +6,8 @@ angular.module('mymessenger.controllers')
 
   $ionicHistory.clearHistory();
 
-   $scope.rooms = Rooms.all();
+//    $scope.rooms = Rooms.all();
+  $scope.rooms = Rooms.roomsForUser();
 
 
   /**
@@ -47,6 +48,7 @@ angular.module('mymessenger.controllers')
    * Delete the chatroom
    */
   $scope.remove = function(chatRoom) {
+      console.log("calling delete room with room name: " + chatRoom.name);
       Rooms.remove(chatRoom);
   } 
 
