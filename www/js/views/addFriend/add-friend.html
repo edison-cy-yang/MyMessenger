@@ -1,0 +1,43 @@
+<ion-view view-title="Add New Friend">
+    <ion-nav-buttons id="10" side="left">
+        <button class="button button-clear button-icon" ng-click="goBack()">
+            <i class="ion-chevron-left"></i>
+        </button>
+    </ion-nav-buttons>
+    <ion-content>
+        <form name="addFriend" novalidate>
+            <div>
+                    <label class="item item-input">
+                        <span class="input-label">Friend's Email</span>
+                        <input name="friendEmail" ng-model="friendEmail" type="text" ng-maxlength="35" placeholder="Required" required/>
+                    </label>
+
+            </div>
+        </form>
+
+        <div>
+            <div>
+                <div class="padding-left padding-right padding-bottom">
+                    <button class="button button-block button-positive" ng-click="searchFriend(friendEmail)" ng-disabled="addFriend.$invalid">
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div>
+                <h1>{{friend.displayName}}</h1>
+            </div>
+        </div>
+                <div>
+            <div>
+                <div class="padding-left padding-right padding-bottom" ng-if="friend">
+                    <button class="button button-block button-positive" ng-click="add(friend)">
+                        Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

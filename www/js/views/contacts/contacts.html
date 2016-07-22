@@ -1,5 +1,23 @@
 <ion-view view-title="Contacts">
+    <ion-nav-buttons id="10" side="secondary">
+    <button class="button button-clear button-icon" ng-click="navAddFriend();">
+      <i class="ion-plus"></i>
+    </button>
+  </ion-nav-buttons>
     <ion-content>
-        <h1>hello world</h1>
+        <ion-list ng-show="friends">
+            <ion-item class="item-icon-left" ng-repeat="friend in friends" type="item-text-wrap" ng-click="openChatRoom(friend.roomId)">
+                <!--<i class="icon {{room.icon}}"></i>-->
+                <h2>{{friend.displayName}}</h2>
+                <!--<ion-option-button class="button-assertive" ng-click="remove(friend)">
+                    Delete
+                </ion-option-button>-->
+            </ion-item>
+        </ion-list>
+        <ion-list ng-hide="friends.length">
+            <ion-item class="textCenter">
+                <i class="icon ion-loading-c"></i> Loading Friends
+            </ion-item>
+        </ion-list>
     </ion-content>
 </ion-view>

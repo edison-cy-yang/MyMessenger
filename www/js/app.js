@@ -136,6 +136,13 @@ $stateProvider
     }
 })
 
+.state('addFriend', {
+    cache: false,
+    url: '/addFriend',
+    templateUrl: 'js/views/addFriend/add-friend.html',
+    controller: 'AddFriendCtrl'
+})
+
        // if none of the above states are matched, use this as the fallback
        $urlRouterProvider.otherwise('/login');
 
