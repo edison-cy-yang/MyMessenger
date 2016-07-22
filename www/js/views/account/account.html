@@ -1,20 +1,20 @@
 <ion-view view-title="Account">
     <ion-content>
+        <div ng-init="loadProfilePic()">
+            <img ng-show="profilePic !== undefined" ng-src="data:image/jpeg;base64,{{profilePic}}" width="50%" height="50%">
+            <img ng-show="profilePic === undefined" ng-src="http://placehold.it/300x300">
+            <button class="button" ng-click="takeProfilePic()">Set New Profile Picture</button>
+        </div>
+
         <div class="padding-left padding-right padding-bottom">
                     <button class="button button-block button-assertive" ng-click="logout()">
                         Logout
                     </button>
         </div>
         <!--<div>
-            <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}">
-            <img ng-show="imgURI === undefined" ng-src="http://placehold.it/300x300">
-            <button class="button" ng-click="takePicture()">Take Picture</button>
-        </div>-->
-
-        <!--<div>
             <button class="button button-icon icon ion-camera" ng-click="upload()"></button>
         </div>-->
-        <div class="row" ng-repeat="image in images" ng-if="$index % 4 === 0">
+        <!--<div class="row" ng-repeat="image in images" ng-if="$index % 4 === 0">
             <div class="col col-25" ng-if="$index < images.length">
                 <img ng-src="data:image/jpeg;base64,{{images[$index].image}}" width="100%" />
             </div>
@@ -27,6 +27,6 @@
             <div class="col col-25" ng-if="$index + 3 < images.length">
                 <img ng-src="data:image/jpeg;base64,{{images[$index + 3].image}}" width="100%" />
             </div>
-        </div>
+        </div>-->
     </ion-content>
 </ion-view>
