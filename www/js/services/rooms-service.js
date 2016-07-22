@@ -34,7 +34,7 @@ angular.module('mymessenger.services')
      },
      /**
       * Get the rooms for current user:
-      * a list of rooms for friends
+      * returns a list of rooms, one room for each friend
       */
      roomsForUser: function() {
                

@@ -1,17 +1,17 @@
 <ion-view view-title="Rooms">
     <ion-nav-buttons id="10" side="secondary">
-    <button class="button button-clear button-icon" ng-click="navCreate();">
+    <!--<button class="button button-clear button-icon" ng-click="navCreate();">
       <i class="ion-plus"></i>
-    </button>
+    </button>-->
   </ion-nav-buttons>
     <ion-content>
         <ion-list ng-show="rooms">
             <ion-item class="item-icon-left" ng-repeat="room in rooms" type="item-text-wrap" ng-click="openChatRoom(room.$id)">
                 <i class="icon {{room.icon}}"></i>
                 <h2>{{room.name}}</h2>
-                <ion-option-button class="button-assertive" ng-click="remove(room)">
+                <!--<ion-option-button class="button-assertive" ng-click="remove(room)">
                     Delete
-                </ion-option-button>
+                </ion-option-button>-->
             </ion-item>
         </ion-list>
         <ion-list ng-hide="rooms.length">
