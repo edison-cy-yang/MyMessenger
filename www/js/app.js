@@ -116,6 +116,7 @@ $stateProvider
 })
 
 .state('tab.account', {
+    cache: false,
     url: '/account',
     views: {
         'account': {
