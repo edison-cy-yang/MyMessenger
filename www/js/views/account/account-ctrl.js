@@ -34,8 +34,8 @@ angular.module('mymessenger.controllers')
                 saveToPhotoAlbum: false
             };
             $cordovaCamera.getPicture(options).then(function(imageData) {
-            //    Chats.sendImage($scope.displayName, imageData);
                 Account.setProfilePic(imageData);
+                $scope.loadProfilePic();
 
             }, function(error) {
                console.error(error);
@@ -48,7 +48,6 @@ angular.module('mymessenger.controllers')
     $scope.loadProfilePic = function() {
          Account.getProfilePic(function (profilePic) {
             $scope.profilePic = profilePic;
-            // console.log($scope.profilePic);
          });
     }
 });
