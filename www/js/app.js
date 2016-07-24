@@ -127,7 +127,7 @@ $stateProvider
 })
 
 .state('tab.contacts', {
-    //cache: false,
+    cache: false,
     url: '/contacts',
     views: {
         'contacts': {

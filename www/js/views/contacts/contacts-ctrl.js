@@ -3,7 +3,7 @@ angular.module('mymessenger.controllers')
 .controller('ContactsCtrl', function($scope, Friends, $state) {
     console.log("ContactsCtrl initialized!");
 
-    $scope.friends = Friends.all();
+    $scope.friends;
 
     $scope.navAddFriend = function() {
         $state.go("addFriend");
@@ -24,5 +24,14 @@ angular.module('mymessenger.controllers')
                 roomId: roomId
             });
         });
+    }
+
+
+    /**
+     * Load all friends with their profile pictures
+     */
+    $scope.loadAllFriends = function() {
+        console.log("load all friends");
+        $scope.friends = Friends.allWithProfilePic();
     }
 });

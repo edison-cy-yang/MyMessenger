@@ -12,6 +12,7 @@ angular.module('mymessenger.services')
     var rooms = $firebaseArray(ref.child('rooms'));
     var currentUser = $firebaseObject(ref.child('users').child(authData.uid));
 
+
     return {
         search: function(email) {
             var friend;
@@ -31,6 +32,29 @@ angular.module('mymessenger.services')
         }, 
         all: function() {
             return friends;
+        },
+        /**
+         * Load all the friends with their profile pictures
+         */
+        allWithProfilePic: function() {
+            var friendsWithImages = [];
+            friends.$loaded().then(function (frds) {
+                friends.forEach(function (friend) {
+                    var friendsId = friend.uid;
+                    var friendUser = $firebaseObject(usersRef.child(friendsId));
+                    friendUser.$loaded().then(function (data) {
+                        console.log("friends name: " + friendUser.displayName);
+                        // user object for displayName and profileImage, the only information we need
+                        var user = {
+                            displayName: friendUser.displayName,
+                            profileImage: friendUser.profileImage
+                        };
+                        friendsWithImages.push(user);
+
+                    });            
+                });
+            });
+            return friendsWithImages;
         },
         add: function(friend) {
                 var room = {
