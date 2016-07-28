@@ -1,6 +1,6 @@
 angular.module('mymessenger.controllers')
 
-.controller('AccountCtrl', function($scope, $state, $cordovaCamera, $firebaseArray, Account) {
+.controller('AccountCtrl', function($scope, $state, $cordovaCamera, $firebaseArray, Account, Auth) {
     console.log("AccountCtrl initialized!");
 
 
@@ -13,8 +13,8 @@ angular.module('mymessenger.controllers')
      */
     $scope.logout = function() {
         console.log("logout function called");
-        ref.unauth();
-        $state.go('login');
+        Auth.$unauth();
+        ionic.Platform.exitApp();
     };
 
 

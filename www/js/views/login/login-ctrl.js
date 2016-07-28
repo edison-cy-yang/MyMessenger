@@ -1,4 +1,4 @@
-angular.module('mymessenger.controllers', [])
+angular.module('mymessenger.controllers', ['ionic'])
 
 .controller('LoginCtrl', function($scope, $ionicModal, $state, $rootScope, $firebaseAuth, $ionicLoading, Auth) {
   console.log('Login Controller Initialized');
@@ -56,7 +56,7 @@ angular.module('mymessenger.controllers', [])
             email: user.email,
             password: user.pwdForLogin
         }).then(function (authData) {
-            console.log("Logged in as:" + authData.uid + " " + authData.password.email);
+            console.log("Logged in in login-ctrl as:" + authData.uid + " " + authData.password.email);
             ref.child("users").child(authData.uid).once('value', function (snapshot) {
                 var val = snapshot.val();
                 // To Update AngularJS $scope either use $apply or $timeout
