@@ -19,13 +19,12 @@ angular.module('mymessenger', ['ionic', 'mymessenger.controllers', 'mymessenger.
                     StatusBar.styleDefault();
              }
 
-    $rootScope.logout = function () {
-        console.log("Logging out from the app");
-    }
-    });
 
+    /**
+     * Check if the user was already authenticated, if yes go straight to room view,
+     * 
+     */
     var ref = new Firebase(FIREBASE_URL);
-
     Auth.$onAuth(function(authData) {
         if (authData) {
             console.log("Logged in as:", authData.uid);
@@ -43,53 +42,45 @@ angular.module('mymessenger', ['ionic', 'mymessenger.controllers', 'mymessenger.
         }
     });
     
- })
+ })})
 
     
 .config(function ($stateProvider, $urlRouterProvider) {
 
-// Ionic uses AngularUI Router which uses the concept of states
-// Learn more here: https://github.com/angular-ui/ui-router
-// Set up the various states which the app can be in.
-// Each state's controller can be found in controllers.js
 $stateProvider
 
-// State to represent Login View
+
+// Login View
 .state('login', {
     url: "/login",
     templateUrl: "js/views/login/login.html",
     controller: 'LoginCtrl',
     resolve: {
         // controller will not be loaded until $waitForAuth resolves
-        // Auth refers to our $firebaseAuth wrapper in the example above
         "currentAuth": ["Auth",
             function (Auth) {
-            // $waitForAuth returns a promise so the resolve waits for it to complete
                 return Auth.$waitForAuth();
     }] }
 })
 
-// setup an abstract state for the tabs directive
+
+// Abstract state for the tabs
 .state('tab', {
     url: "/tab",
     abstract: true,
     templateUrl: "js/views/tabs/tabs.html",
     resolve: {
         // controller will not be loaded until $requireAuth resolves
-        // Auth refers to our $firebaseAuth wrapper in the example above
         "currentAuth": ["Auth",
             function (Auth) {
          // $requireAuth returns a promise so the resolve waits for it to complete
-         // If the promise is rejected, it will throw a $stateChangeError (see above)
                 return Auth.$requireAuth();
             }]
     }
 })
 
-// Each tab has its own nav history stack:
 
-
-
+// Room View
 .state('tab.rooms', {
     cache: false,
     url: '/rooms',
@@ -101,6 +92,8 @@ $stateProvider
     }
 })
 
+
+// Chat View
 .state('chat', {
     cache: false,
     url: '/chat/:roomId',   
@@ -108,6 +101,8 @@ $stateProvider
     controller: 'ChatCtrl'   
 })
 
+
+// Create Room View
 .state('createRoom', {
     cache: false,
     url: '/createRoom',
@@ -115,6 +110,8 @@ $stateProvider
     controller: 'CreateRoomCtrl'
 })
 
+
+// Account View
 .state('tab.account', {
     cache: false,
     url: '/account',
@@ -126,6 +123,8 @@ $stateProvider
     }
 })
 
+
+// Contacts View
 .state('tab.contacts', {
     cache: false,
     url: '/contacts',
@@ -137,6 +136,8 @@ $stateProvider
     }
 })
 
+
+// Add Friend View
 .state('addFriend', {
     cache: false,
     url: '/addFriend',
@@ -147,4 +148,4 @@ $stateProvider
        // if none of the above states are matched, use this as the fallback
        $urlRouterProvider.otherwise('/login');
 
-     });
+});
