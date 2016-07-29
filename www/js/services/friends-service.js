@@ -41,12 +41,14 @@ angular.module('mymessenger.services')
             friends.$loaded().then(function (frds) {
                 friends.forEach(function (friend) {
                     var friendsId = friend.uid;
+                    var roomId = friend.roomId;
                     var friendUser = $firebaseObject(usersRef.child(friendsId));
                     friendUser.$loaded().then(function (data) {
                         console.log("friends name: " + friendUser.displayName);
                         // user object for displayName and profileImage, the only information we need
                         var user = {
                             displayName: friendUser.displayName,
+                            roomId: roomId,
                             profileImage: friendUser.profileImage
                         };
                         friendsWithImages.push(user);
