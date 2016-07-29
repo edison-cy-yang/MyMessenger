@@ -28,8 +28,9 @@ angular.module('mymessenger.controllers')
 
   $scope.sendMessage = function(msg) {
       console.log(msg);
-      console.log("displayName: " + $scope.displayName);
-      Chats.send($scope.displayName, msg);
+    //   console.log("displayName: " + $scope.user.displayName);
+    //   console.log("userId: " + $scope.userId);
+      Chats.send($scope.user, msg, $scope.userId);
       $scope.IM.textMessage = ""; 
   }
 
