@@ -1,8 +1,8 @@
 angular.module('mymessenger.controllers')
 
-.controller('ChatCtrl', function($scope, Chats, $stateParams, $ionicHistory, Auth, $cordovaCamera) {
+.controller('ChatCtrl', function($scope, Chats, $stateParams, $ionicHistory, Auth, $cordovaCamera, $ionicScrollDelegate) {
   console.log('Chat Controller initialized');
-  $scope.chats = Chats.all();
+//   $scope.chats = Chats.all();
   $scope.IM = {
       textMessage: ""
   };
@@ -10,21 +10,28 @@ angular.module('mymessenger.controllers')
 
   Chats.selectRoom($stateParams.roomId);
 
+  var viewScroll = $ionicScrollDelegate.$getByHandle('messageScroll');
+
   var roomName = Chats.getSelectedRoomName();
 
-// // To store images
-//   var ref = new Firebase(FIREBASE_URL);
-//     var syncImages = $firebaseArray(ref.child("images"));
-//     $scope.images = [];
 
-//     $scope.images = syncImages;
 
   // fetching chat records only if a room is selected
   if(roomName) {
       $scope.roomName = ' - ' + roomName;
       $scope.chats = Chats.all();
-
   }
+
+
+  /**
+   * On view enter, scroll to bottom of chat
+   */
+  $scope.$on('$ionicView.enter', function () {
+      console.log('chat $ionicView.enter');
+      viewScroll.scrollBottom();
+
+  });
+
 
   $scope.sendMessage = function(msg) {
       console.log(msg);
@@ -32,11 +39,14 @@ angular.module('mymessenger.controllers')
     //   console.log("userId: " + $scope.userId);
       Chats.send($scope.user, msg, $scope.userId);
       $scope.IM.textMessage = ""; 
-  }
+      viewScroll.scrollBottom();
+  };
+
 
   $scope.remove = function(chat) {
       Chats.remove(chat);
-  }
+  };
+
 
   $scope.convertToTime = function(timestamp) {
       var d = new Date(timestamp);
@@ -44,7 +54,8 @@ angular.module('mymessenger.controllers')
       var m = d.getMinutes();
       var time = h + ":" + m;
       return time;      
-  }
+  };
+
 
   $scope.convertToDateAndTime = function(timestamp) {
       var d = new Date(timestamp);
@@ -60,12 +71,12 @@ angular.module('mymessenger.controllers')
       var date = d.getDate();
       var dateTime = month + "/" + date + " - " + h + ":" + m;
       return dateTime;
-  }
+  };
 
 
   $scope.goBack = function() {
       $ionicHistory.goBack();
-  }
+  };
 
 
 /////////////////Functions for image upload///////////////////
@@ -85,12 +96,14 @@ angular.module('mymessenger.controllers')
                 saveToPhotoAlbum: false
             };
             $cordovaCamera.getPicture(options).then(function(imageData) {
-               Chats.sendImage($scope.displayName, imageData);
-
+               Chats.sendImage($scope.user, imageData, $scope.userId).then(function () {
+                   viewScroll.scrollBottom();
+               });
             }, function(error) {
                console.error(error);
             });
-    }
+    };
+
 
   /**
    * Function to open the camera
@@ -113,7 +126,6 @@ angular.module('mymessenger.controllers')
         }, function(err) {
             // An error occured. Show a message to the user
         });
-    }
-
+    };
 
 });

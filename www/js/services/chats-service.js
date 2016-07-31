@@ -62,11 +62,12 @@ angular.module('mymessenger.services')
           });
         }
       },
-      sendImage: function(from, imageData) {
+      sendImage: function(from, imageData, id) {
         console.log("sending image from: " + from.displayName);
         if(from && imageData) {
           var imageMessage = {
             from: from.displayName,
+            userId: id,
             message: " test",
             isImage: true,
             image: imageData,
