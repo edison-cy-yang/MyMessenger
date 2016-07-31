@@ -4,42 +4,54 @@
             <i class="ion-chevron-left"></i>
         </button>
     </ion-nav-buttons>
-    <ion-content>
-        <ion-scroll direction="y" style="height: 500px">
-        <ion-list ng-show="roomName">
+    <ion-content has-bouncing="true" class="has-header has-footer" delegate-handle="messageScroll">
+        <div ng-show="roomName">
             <ion-item ng-hide="chats" class="textCenter">
                 <i class="icon ion-loading-c"></i> Loading Chats
             </ion-item>
             <ion-item ng-if="chats.length == 0" class="textCenter">
                 <h4>No messages in this room. Send message to start.</h4>
             </ion-item>
-            <ion-item class="" ng-repeat="chat in chats | orderBy:'createdAt':false" type="item-text-wrap">
-                <h4>{{chat.from}} :</h4>
-                <span am-time-ago="chat.createdAt" class="item-note">
-                </span>
-                <p ng-if="!chat.isImage">{{chat.message}}</p>
-                <img ng-if="chat.isImage"" ng-src="data:image/jpeg;base64,{{chat.image}}" style="width: 50%; height: 50%" />
-                <p>{{convertToDateAndTime(chat.createdAt)}}</p>
-                <ion-option-button class="button-assertive" ng-click="remove(chat)">
-                    Delete
-                </ion-option-button>
-            </ion-item>
-        </ion-list>
-        </ion-scroll>
-        <ion-item class="item item-input-inset">
+
+            <div class="message-wrapper" ng-repeat="chat in chats | orderBy:'createdAt':false" type="item-text-wrap">
+                <ul>
+                    <li class="clearfix">
+                        <div ng-if="chat.userId !== userId">
+                            <div class="chat-bubble left">
+                                <span class="name">{{chat.from}} :</span>
+                                <span am-time-ago="chat.createdAt" class="item-note">
+                                </span>
+                                <div class="message" ng-if="!chat.isImage">{{chat.message}}</div>
+                                <img ng-if="chat.isImage"" ng-src="data:image/jpeg;base64,{{chat.image}}" style="width: 50%; height: 50%" />
+                                <span class="chat-time">{{convertToDateAndTime(chat.createdAt)}}</span>
+                            </div>
+                        </div>
+                        
+                        <div ng-if="chat.userId === userId">
+                            <div class="chat-bubble right">
+                                <span class="name">{{chat.from}} :</span>
+                                <span am-time-ago="chat.createdAt" class="item-note">
+                                </span>
+                                <div class="message" ng-if="!chat.isImage">{{chat.message}}</div>
+                                <img ng-if="chat.isImage"" ng-src="data:image/jpeg;base64,{{chat.image}}" style="width: 50%; height: 50%" />
+                                <span class="chat-time">{{convertToDateAndTime(chat.createdAt)}}</span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </ion-content>
+            <ion-footer-bar class="bar-stable item-input-inset message footer" keyboard-attach>
                 <button class="button button-icon icon ion-camera" ng-click="upload()"></button>
                 <label class="item-input-wrapper">
-                    <input type="text" ng-model="IM.textMessage" placeholder="Type in your message...">
+                    <textarea ng-model="IM.textMessage" placeholder="Send a message..." required minlength="1" maxlength="1500">                       
+                    </textarea>
                 </label>
-                <button ng-click="sendMessage(IM.textMessage)" class="button button-small button-balanced">
-                    Send
-                </button>
-        </ion-item>
-        <ion-list ng-hide="roomName">
-            <ion-item class="textCenter">
-                <h4>Please select a room to chat first.</h4>
-            </ion-item>
-        </ion-list>
-
-    </ion-content>
+                <div class="footer-btn-wrap">
+                    <button class="button button-small button-balanced footer-btn" ng-click="sendMessage(IM.textMessage)">
+                        Send
+                    </button>
+                </div>
+            </ion-footer-bar>    
 </ion-view>

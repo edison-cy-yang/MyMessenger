@@ -47,11 +47,12 @@ angular.module('mymessenger.services')
           console.log("rooms selected: " + selectedRoomId);
         //}
       },
-      send: function(from, message) {
+      send: function(from, message, id) {
         console.log("sending message from: " + from.displayName + " & message is " + message);
         if(from && message) {
           var chatMessage = {
             from: from.displayName,
+            userId: id,
             message: message,
             isImage: false,
             createdAt: Firebase.ServerValue.TIMESTAMP
@@ -61,11 +62,12 @@ angular.module('mymessenger.services')
           });
         }
       },
-      sendImage: function(from, imageData) {
+      sendImage: function(from, imageData, id) {
         console.log("sending image from: " + from.displayName);
         if(from && imageData) {
           var imageMessage = {
             from: from.displayName,
+            userId: id,
             message: " test",
             isImage: true,
             image: imageData,

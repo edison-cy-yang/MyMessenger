@@ -32,9 +32,11 @@ angular.module('mymessenger', ['ionic', 'mymessenger.controllers', 'mymessenger.
                 var val = snapshot.val();
                 // To Update AngularJS $scope either use $apply or $timeout
                 //$scope.$apply(function () {
-                    $rootScope.displayName = val;
+                    $rootScope.user = val;
+                    $rootScope.userId = authData.uid;
                // });
-                console.log("root displayName: " + $rootScope.displayName.displayName);
+                // console.log("root displayName: " + $rootScope.user.displayName);
+                // console.log("root userId: " + $rootScope.userId);
             });
             $state.go('tab.rooms');
         } else {
