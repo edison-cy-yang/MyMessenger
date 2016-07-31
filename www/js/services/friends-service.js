@@ -61,6 +61,8 @@ angular.module('mymessenger.services')
         add: function(friend) {
                 var room = {
                     name: currentUser.displayName + " and " +friend.displayName,
+                    user1: friend.uid,
+                    user2: authData.uid
                 };
                 var roomKey;
                 rooms.$add(room).then(function (data) {

@@ -45,8 +45,22 @@ angular.module('mymessenger.services')
           for(var i = 0; i < roomsForUser.length; i++) {
             console.log('room is: ' + roomsForUser[i].roomId);
             var firebaseRoom = $firebaseObject(ref.child('rooms').child(roomsForUser[i].roomId));
-            firebaseRoom.$loaded().then(function (data) {
-                allRooms.push(data);
+            firebaseRoom.$loaded().then(function (room) { // data is room
+                if(room.user1 !== authData.uid) {
+                  console.log("room.user1: " + room.user1 + " authData.uid: " + authData.uid);
+                   var friendObj = $firebaseObject(ref.child('users').child(room.user1));
+                   friendObj.$loaded().then(function (friend) {
+                      room.name = friend.displayName;
+                   });
+                }
+                else {
+                   console.log("room.user2: " + room.user2 + " authData.uid: " + authData.uid);
+                   var friendObj = $firebaseObject(ref.child('users').child(room.user2));
+                   friendObj.$loaded().then(function (friend) {
+                      room.name = friend.displayName;
+                   });
+                }
+                allRooms.push(room);
                 // console.log("data is: " + data.name);
                 // console.log("firebaseRoom is: " + firebaseRoom.name);
                 // console.log(data === firebaseRoom);
