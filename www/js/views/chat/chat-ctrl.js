@@ -33,21 +33,31 @@ angular.module('mymessenger.controllers')
   });
 
 
+  /**
+   * Send a message to the chat room
+   */
   $scope.sendMessage = function(msg) {
       console.log(msg);
     //   console.log("displayName: " + $scope.user.displayName);
     //   console.log("userId: " + $scope.userId);
       Chats.send($scope.user, msg, $scope.userId);
       $scope.IM.textMessage = ""; 
+      // scroll down to the bottom once messge is sent
       viewScroll.scrollBottom();
   };
 
 
+  /**
+   * Remove a message
+   */
   $scope.remove = function(chat) {
       Chats.remove(chat);
   };
 
 
+  /**
+   * Convert to hh:mm time format
+   */
   $scope.convertToTime = function(timestamp) {
       var d = new Date(timestamp);
       var h = d.getHours();
@@ -57,6 +67,10 @@ angular.module('mymessenger.controllers')
   };
 
 
+  /**
+   * Convert to date: month/day
+   * and time: hh:mm
+   */
   $scope.convertToDateAndTime = function(timestamp) {
       var d = new Date(timestamp);
       var h = d.getHours();
@@ -74,15 +88,20 @@ angular.module('mymessenger.controllers')
   };
 
 
+  /**
+   * Go back to previous view
+   */
   $scope.goBack = function() {
       $ionicHistory.goBack();
   };
 
 
 /////////////////Functions for image upload///////////////////
-/**
- * 
- */
+
+
+  /**
+   * Take a picture, and send the picture as a message 
+   */  
   $scope.upload = function() {
             var options = {
                 quality : 100,
