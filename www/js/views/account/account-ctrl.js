@@ -13,6 +13,7 @@ angular.module('mymessenger.controllers')
      */
     $scope.logout = function() {
         console.log("logout function called");
+        alert("Logging out!");
         Auth.$unauth();
         ionic.Platform.exitApp();
     };
