@@ -10,14 +10,23 @@ angular.module('mymessenger.services')
     var chats;
 
     return {
+      /**
+       * Return all the messages
+       */
       all: function() {
         return chats;
       }, 
+      /**
+       * Remove a message
+       */
       remove: function(chat) {
         chats.$remove(chat).then(function (ref) {
           ref.key() === chat.$id;
         });
       },
+      /**
+       * Get a specific message
+       */
       get: function(chatId) {
         for(var i = 0; i < chats.length; i++) {
           if(parseInt(chatId) === chats[i].id) {
@@ -26,6 +35,9 @@ angular.module('mymessenger.services')
         }
         return null;
       },
+      /**
+       * Return the name of the selected room
+       */
       getSelectedRoomName: function() {
         var selectedRoom;
         if(selectedRoomId && selectedRoomId != null) {
@@ -39,14 +51,19 @@ angular.module('mymessenger.services')
         else 
           return null;
       },
+      /**
+       * Select a room, which will then load all the messages in that room
+       */
       selectRoom: function(roomId) {
         console.log("selecting the room with id: " + roomId);
         selectedRoomId = roomId;
-        //if(!isNaN(selectedRoomId)) {
-          chats = $firebaseArray(ref.child('rooms').child(selectedRoomId).child('chats'));
-          console.log("rooms selected: " + selectedRoomId);
-        //}
+        // Load all the messages in this room
+        chats = $firebaseArray(ref.child('rooms').child(selectedRoomId).child('chats'));
+        console.log("rooms selected: " + selectedRoomId);      
       },
+      /**
+       * Send a text message
+       */
       send: function(from, message, id) {
         console.log("sending message from: " + from.displayName + " & message is " + message);
         if(from && message) {
@@ -62,6 +79,9 @@ angular.module('mymessenger.services')
           });
         }
       },
+      /**
+       * Send an image as a message
+       */
       sendImage: function(from, imageData, id) {
         console.log("sending image from: " + from.displayName);
         if(from && imageData) {
