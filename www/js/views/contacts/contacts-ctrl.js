@@ -5,19 +5,31 @@ angular.module('mymessenger.controllers')
 
     $scope.friends;
 
+
+    /**
+     * On entering the view, loadAllFriends
+     */
     $scope.$on('$ionicView.enter', function () {
       console.log('contacts $ionicView.enter');
       $scope.loadAllFriends();
     });
 
+
+    /**
+     * Navigate to add friends view
+     */
     $scope.navAddFriend = function() {
         $state.go("addFriend");
     }
 
 
+    /**
+     * Remove a friend
+     */
     $scope.remove = function(friend) {
         Friends.remove(friend);
     }
+
 
     /**
      * Open a specific chat room
