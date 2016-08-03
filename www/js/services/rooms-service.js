@@ -13,18 +13,30 @@ angular.module('mymessenger.services')
    var roomsForUser = $firebaseArray(ref.child('users').child(authData.uid).child('rooms'));
   
    return {
+     /**
+      * Return all rooms 
+      */
      all: function() {
        return rooms;
      }, 
+     /**
+      * Get a specific room by roomId
+      */
      get: function(roomId){
        return rooms.$getRecord(roomId);
      },
+     /**
+      * Create a room
+      */
      createRoom: function(chatRoom) {
        rooms.$add(chatRoom).then(function (data) {
          console.log("Chat room added!");
        });
 
      },
+     /**
+      * Remove a room
+      */
      remove: function(chatRoom) {
        console.log("room id: " + chatRoom.$id);
        rooms.$remove(chatRoom.$id).then(function(ref) {
