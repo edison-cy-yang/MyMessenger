@@ -42,6 +42,7 @@ angular.module('mymessenger.controllers')
             });
     }
 
+
     /**
      * Load profile pic from firebase to display
      */
