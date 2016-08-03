@@ -10,18 +10,22 @@ angular.module('mymessenger.services')
      var profilePic;
 
      return {
+         /**
+          * Set profile picture for current user
+          */
          setProfilePic: function(imageData) {
              userRef.update({
                  profileImage: imageData
              });
          },
-
+         /**
+          * Return the profile picture
+          */
          getProfilePic: function(callback) {             
              userObject.$loaded().then(function (data) {
                  profilePic = data.profileImage;
                  callback(profilePic);
-             });
-            
+             });           
          }
      }
 
