@@ -31,6 +31,7 @@ angular.module('mymessenger.controllers', ['ionic'])
 
   /**
    * Create a new user with email and password
+   * TODO: move into a service, front end code shouldn't have this
    */
   $scope.createUser = function(user) {
     console.log("Create User Function called");
@@ -62,6 +63,7 @@ angular.module('mymessenger.controllers', ['ionic'])
 
   /**
    * Authenticate the user with email and password
+   * TODO: move into a service, front end code shouldn't have this
    */
   $scope.signIn = function(user) {
     if (user && user.email && user.pwdForLogin) {
