@@ -5,6 +5,11 @@ angular.module('mymessenger.controllers')
 
     $scope.friends;
 
+    $scope.$on('$ionicView.enter', function () {
+      console.log('contacts $ionicView.enter');
+      $scope.loadAllFriends();
+    });
+
     $scope.navAddFriend = function() {
         $state.go("addFriend");
     }

@@ -6,11 +6,11 @@
   </ion-nav-buttons>
     <ion-content>
         <ion-list ng-show="friends">
-            <ion-item class="item-icon-left" ng-repeat="friend in friends" type="item-text-wrap" ng-click="openChatRoom(friend.roomId)">
+            <ion-item ng-repeat="friend in friends" type="item-text-wrap" ng-click="openChatRoom(friend.roomId)">
                 <!--<i class="icon {{room.icon}}"></i>-->
                 <div class="row">
-                    <img class="column" ng-src="data:image/jpeg;base64,{{friend.profileImage}}" width="15%" height="15%">
-                    <h2 class="column">{{friend.displayName}}</h2>
+                    <img class="profile-pic" ng-src="data:image/jpeg;base64,{{friend.profileImage}}" width="15%" height="15%">
+                    <h2>{{friend.displayName}}</h2>
                 </div>
                 <!--<ion-option-button class="button-assertive" ng-click="remove(friend)">
                     Delete

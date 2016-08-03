@@ -99,3 +99,7 @@ textarea, .item-input-wrapper {
 .chat-time {
   font-size: 10px;
 }
+
+.profile-pic {
+  float: left
+}
