@@ -3,6 +3,10 @@ angular.module('mymessenger.controllers', ['ionic'])
 .controller('LoginCtrl', function($scope, $ionicModal, $state, $rootScope, $firebaseAuth, $ionicLoading, Auth) {
   console.log('Login Controller Initialized');
   //console.log($rootScope.FIREBASE_URL);
+
+  /**
+   * Check if already authenticated, then go to rooms view
+   */
   Auth.$onAuth(function(authData) {
         if (authData) {
             console.log("Logged in as:", authData.uid);
@@ -14,12 +18,20 @@ angular.module('mymessenger.controllers', ['ionic'])
 
   var ref = new Firebase(FIREBASE_URL);
 
+
+  /**
+   * ionicModal of the signup page
+   */
   $ionicModal.fromTemplateUrl('js/views/signup/signup.html', {
     scope: $scope
   }).then(function (modal) {
     $scope.modal = modal;
   });
 
+
+  /**
+   * Create a new user with email and password
+   */
   $scope.createUser = function(user) {
     console.log("Create User Function called");
         if (user && user.email && user.password && user.displayname) {
@@ -43,10 +55,14 @@ angular.module('mymessenger.controllers', ['ionic'])
                 $ionicLoading.hide();
             });
         } else
-            alert("Please fill all details");
+            alert("Information incomplete, please fill in the details");
 
   };
 
+
+  /**
+   * Authenticate the user with email and password
+   */
   $scope.signIn = function(user) {
     if (user && user.email && user.pwdForLogin) {
         $ionicLoading.show({
@@ -71,6 +87,6 @@ angular.module('mymessenger.controllers', ['ionic'])
             $ionicLoading.hide();
         });
     } else
-        alert("Please enter email and password both");
+        alert("Please enter both email and password");
   };
 });
